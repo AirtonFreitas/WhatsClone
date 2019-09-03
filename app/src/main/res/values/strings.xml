@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WhatsClone</string>
+    <string name="botaoCadastrar">Cadastrar</string>
+    <string name="textoValidacao">Validação</string>
+    <string name="textValid">Você recebeu um SMS para validação do seu número, digite o código de validação abaixo.</string>
+    <string name="BotaoValidar">Validar</string>
+</resources>
