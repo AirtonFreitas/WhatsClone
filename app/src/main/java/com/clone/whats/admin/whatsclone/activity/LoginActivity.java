@@ -71,7 +71,6 @@ public class LoginActivity extends Activity {
                 String token = String.valueOf(numeroRandomico);
 
 
-
             }
         });
 
