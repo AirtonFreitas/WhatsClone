@@ -65,13 +65,16 @@
         android:textColor="@color/textColorPrimary" />
 
     <Button
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/botaoCadastrar"
         android:id="@+id/btCadastrar"
         android:layout_below="@+id/edit_telefone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="37dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/edit_telefone"
+        android:layout_alignEnd="@+id/edit_telefone"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/textColorPrimary" />
 

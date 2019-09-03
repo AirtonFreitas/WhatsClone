@@ -6,13 +6,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 import com.clone.whats.admin.whatsclone.R;
+import com.clone.whats.admin.whatsclone.helper.Preferencias;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
+import java.util.HashMap;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 public class LoginActivity extends Activity {
 
@@ -28,17 +31,17 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        telefone = (EditText) findViewById(R.id.edit_telefone);
-        codPais  = (EditText) findViewById(R.id.editTextArea);
-        ddd      = (EditText) findViewById(R.id.editTextDDD);
+        telefone  = (EditText) findViewById(R.id.edit_telefone);
+        codPais   = (EditText) findViewById(R.id.editTextArea);
+        ddd       = (EditText) findViewById(R.id.editTextDDD);
         cadastrar = (Button) findViewById(R.id.btCadastrar);
 
 
-        SimpleMaskFormatter simpleMaskTelefone = new SimpleMaskFormatter(" N NNNN-NNNN ");
+        SimpleMaskFormatter simpleMaskTelefone = new SimpleMaskFormatter("NNNNN-NNNN");
         MaskTextWatcher maskTelefone = new MaskTextWatcher(telefone, simpleMaskTelefone);
         telefone.addTextChangedListener( maskTelefone );
 
-        SimpleMaskFormatter simpleMaskCodPais = new SimpleMaskFormatter(" + NN ");
+        SimpleMaskFormatter simpleMaskCodPais = new SimpleMaskFormatter("+NN");
         MaskTextWatcher maskArea = new MaskTextWatcher(codPais, simpleMaskCodPais);
         codPais.addTextChangedListener( maskArea );
 
@@ -70,6 +73,12 @@ public class LoginActivity extends Activity {
 
                 String token = String.valueOf(numeroRandomico);
 
+
+                Preferencias preferences = new Preferencias(LoginActivity.this);
+                preferences.salvarUsuarioPreferencias(nomeUsuario, telefoneSemFormatacao, token);
+
+                HashMap<String, String> usuario = preferences.getDadosUsuario();
+                Log.i("TOKEN", "NOME:" + usuario.get("nome") + "FONE: " + usuario.get("telefone"));
 
             }
         });
